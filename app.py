@@ -1,6 +1,9 @@
 
 from http.server import HTTPServer, BaseHTTPRequestHandler
 
+HOST = "0.0.0.0"
+PORT = 5000
+
 class MyApp(BaseHTTPRequestHandler):
 
     def do_GET(self):
@@ -24,9 +27,7 @@ class MyApp(BaseHTTPRequestHandler):
 
         self.wfile.write(html.encode())
 
-
-server = HTTPServer(("0.0.0.0", 5000), MyApp)
-
-print("Server running on port 5000")
-
-server.serve_forever()
+if __name__ == "__main__":
+    server = HTTPServer((HOST, PORT), MyApp)
+    print("Server running on port 5000")
+    server.serve_forever()
